@@ -9,10 +9,16 @@
 <%
 
     boolean loginFail = false;
-    if (request.getParameter("btnLoginServlet") != null) {
-        UserBean user = (UserBean) session.getAttribute("currentSessionUser");
-        loginFail = user == null || !user.isValid();
+    boolean isFormSubmited = "POST".equals(request.getMethod().toUpperCase()) && request.getParameter("btnLoginServlet") != null;
+    UserBean user = (UserBean) session.getAttribute("currentSessionUser");
+
+    if (isFormSubmited && user != null) {
+            loginFail = !user.isLoginValid();
     }
+
+//    if (request.getParameter("btnLoginServlet") != null) {
+//
+//    }
 
 %>
 <html>
@@ -20,12 +26,13 @@
     <meta charset="utf-8">
     <title>Hello World | Login</title>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <style type="text/css" >
-        body { font-family: 'Open Sans', serif; }
-    </style>
+    <link type="text/css" rel="stylesheet" href="styles/web.css">
 </head>
 <body>
-    <form action="LoginServlet" method="post">
+
+    loginFail = <%= loginFail %>
+
+    <form id="loginFrm" action="LoginServlet" method="post">
         <fieldset>
             <legend>Login Form</legend>
                 Username <input type="text" name="un" placeholder="Please enter your username" autofocus /><br>
@@ -33,9 +40,13 @@
                          <input type="submit" name="btnLoginServlet" value="submit">
         </fieldset>
     </form>
-    <c:if test="loginFail">
-        <p>Login or password not valid!</p>
-        <%= loginFail %>
-    </c:if>
+<%--    <c:if test="${loginFail == true}">--%>
+<%--        <p>Login or password not valid!</p>--%>
+<%--    </c:if>--%>
+
+    <% if (isFormSubmited && loginFail) { %>
+        <p class="errorMsg">Login or password not valid!</p>
+    <% } %>
+
 </body>
 </html>
