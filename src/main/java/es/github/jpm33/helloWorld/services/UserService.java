@@ -1,7 +1,6 @@
 package es.github.jpm33.helloWorld.services;
 
 import es.github.jpm33.helloWorld.domain.beans.UserBean;
-import es.github.jpm33.helloWorld.web.servlets.LoginServlet;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

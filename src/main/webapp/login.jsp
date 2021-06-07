@@ -47,6 +47,5 @@
     <% if (isFormSubmited && loginFail) { %>
         <p class="errorMsg">Login or password not valid!</p>
     <% } %>
-
 </body>
 </html>

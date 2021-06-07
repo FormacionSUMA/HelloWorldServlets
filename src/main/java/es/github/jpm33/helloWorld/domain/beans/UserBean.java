@@ -20,9 +20,6 @@ public class UserBean {
     // Campo extra
     private boolean loginValid = false;
 
-    public UserBean() {
-    }
-
     public UserBean(String login, String password) {
         this.login = login;
         this.password = password;
@@ -98,6 +95,34 @@ public class UserBean {
     }
 
     // -- endOf getters & setters --
+
+=======
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public UserBean setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserBean setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public UserBean setValid(boolean valid) {
+        this.valid = valid;
+        return this;
+    }
 
     @Override
     public boolean equals(Object o) {
