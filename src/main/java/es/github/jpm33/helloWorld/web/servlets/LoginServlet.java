@@ -12,20 +12,27 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 @WebServlet(value = "/LoginServlet")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends AbstractServlet {
 
     private static Logger logger = Logger.getLogger(LoginServlet.class.getName());
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
 
-            UserBean user = new UserBean()
-                    .setUserName(req.getParameter("un"))
-                    .setPassword(req.getParameter("pw"));
+            printRequest(req);
+            String fUsernamee = req.getParameter("un");
+            String fPassword = req.getParameter("pw");
 
-            if (UserService.login(user).isValid()) {
+            logger.info("   POST[un] = " + fUsernamee);
+            logger.info("   POST[pw] = " + fPassword);
+
+            UserBean user = UserService.login(new UserBean(fUsernamee, fPassword));
+            if (user.isLoginValid()) {
                 req.getSession(true).setAttribute("currentSessionUser", user);
-                logger.info("!! Login OK !!");
+                logger.info("Login OK");
+            }
+            else {
+                logger.info("Login KO para " + user);
             }
 
             resp.sendRedirect("index.jsp");

@@ -60,6 +60,14 @@ Ejecutar la aplicación sólo necesita compilar el proyecto y ejecutar el JAR:
 * Nombre de la App: hello-world-servlets
 * URL de acceso (publicación): https://hello-world-servlets.herokuapp.com/
 
+### Addons Heroku
+
+#### ClearDB MYSQL
+
+Se ha creado una BD free con nomnre **heroku_35f9f44615d5051**, que crea la variable de entorno `CLEARDB_DATABASE_URL` con el valor:
+
+    mysql://b855dd2babd9c5:1cd62413@eu-cdbr-west-01.cleardb.com/heroku_35f9f44615d5051?reconnect=true
+
 
 ## REFERENCIAS
 
