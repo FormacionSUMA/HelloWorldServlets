@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class UserService {
 
-    private static Logger logger = Logger.getLogger(UserService.class.getName());
+    private static Logger logger = Logger.getLogger(UserService.class.getSimpleName());
 
     public static UserBean getUser(String login) {
         try (Connection con = ConnectionManager.getConnection()) {
@@ -52,6 +52,9 @@ public class UserService {
                 user = getUser(user.getLogin()); // refresco todos los datos
                 user.setLoginValid(true);        // LoginValid => TRUE
                 logger.info(user.toString());
+            }
+            else {
+                logger.severe(String.format("El intento de log-in con login '%s' y password '%s' no es correcto!", user.getLogin(), user.getPassword()));
             }
 
         } catch (SQLException throwables) {

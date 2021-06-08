@@ -29,7 +29,7 @@
     </ul>
 </ul>
 </p>
-<a href="logout.jsp">Cerrar sesión</a>
+<a href="/Logout">Cerrar sesión</a>
 <br>
 <br>
 <a href="ReportServlet">Generar PDF</a>

@@ -1,7 +1,9 @@
 package es.github.jpm33.helloWorld.services;
 
 import es.github.jpm33.helloWorld.web.servlets.ReportServlet;
+import org.apache.commons.lang3.StringUtils;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -11,13 +13,17 @@ import static java.util.logging.Level.SEVERE;
 
 public class ConfigurationService {
 
-    private static Logger logger = Logger.getLogger(ConfigurationService.class.getName());
+    private static Logger logger = Logger.getLogger(ConfigurationService.class.getSimpleName());
 
     private String propFileName;
     private Properties prop;
 
     public ConfigurationService() {
         this("application.properties");
+
+        if (! StringUtils.isEmpty(System.getProperty("configFile"))) {
+            this.propFileName = System.getProperty("configFile");
+        }
     }
 
     public ConfigurationService(String propFileName) {

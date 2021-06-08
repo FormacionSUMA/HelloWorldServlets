@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/LoginServlet")
+@WebServlet(value = "/Login")
 public class LoginServlet extends AbstractServlet {
 
-    private static Logger logger = Logger.getLogger(LoginServlet.class.getName());
+    private static Logger logger = Logger.getLogger(LoginServlet.class.getSimpleName());
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
 
-            printRequest(req);
+//            printRequest(req);
             String fUsernamee = req.getParameter("un");
             String fPassword = req.getParameter("pw");
 

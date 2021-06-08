@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 @WebServlet(value = "/ReportServlet")
 public class ReportServlet extends HttpServlet {
 
-    private static Logger logger = Logger.getLogger(ReportServlet.class.getName());
+    private static Logger logger = Logger.getLogger(ReportServlet.class.getSimpleName());
     private static Document document = new Document();
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -25,7 +25,7 @@
     <link type="text/css" rel="stylesheet" href="styles/web.css">
 </head>
 <body>
-    <form id="loginForm" action="./LoginServlet" method="post">
+    <form id="loginForm" action="./Login" method="post">
         <fieldset>
             <legend>Login Form</legend>
                 <label for="un">Username</label>

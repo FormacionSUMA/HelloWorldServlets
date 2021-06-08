@@ -5,22 +5,34 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
+import java.util.StringJoiner;
 import java.util.logging.Logger;
 
 import static java.util.logging.Level.SEVERE;
 
 public class ConnectionManager {
 
-    private static Logger logger = Logger.getLogger(ConnectionManager.class.getName());
-    private static ConfigurationService config = new ConfigurationService();
+    private static Logger logger = Logger.getLogger(ConnectionManager.class.getSimpleName());
 
     public static Connection getConnection() {
         try {
-            URI uri = new URI(System.getenv("CLEARDB_DATABASE_URL") == null ? config.getValues().getProperty("jdbc_url") :
-                                                                                    System.getenv("CLEARDB_DATABASE_URL"));
-            ConeectionParams params = new ConeectionParams(uri);
+            ConeectionParams params;
+            Properties props = new ConfigurationService().getValues();
 
-            Class.forName(config.getValues().getProperty("jdbc_driver"));
+            if ("org.h2.Driver".equals(props.getProperty("jdbc_driver"))) {
+                params = new ConeectionParams();              // testing
+                params.setUrl(props.getProperty("jdbc_url")); // leer jdbc_url del fichero test.properties
+                params.setUsername("sa");
+                params.setPassword("");
+            }
+            else {
+                URI uri = new URI(System.getenv("CLEARDB_DATABASE_URL") == null ? props.getProperty("jdbc_url") :
+                                                                                        System.getenv("CLEARDB_DATABASE_URL"));
+                params = new ConeectionParams(uri); // producción
+            }
+
+            Class.forName(props.getProperty("jdbc_driver"));
             return DriverManager.getConnection(params.getUrl(), params.getUsername(), params.getPassword());
 
         } catch (ClassNotFoundException | URISyntaxException | SQLException ex) {
@@ -37,6 +49,10 @@ class ConeectionParams {
     private String username;
     private String password;
     private String url;
+
+    public ConeectionParams() {
+
+    }
 
     public ConeectionParams(URI uri) {
         username = uri.getUserInfo().split(":")[0];
@@ -69,5 +85,14 @@ class ConeectionParams {
     public ConeectionParams setUrl(String url) {
         this.url = url;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", ConeectionParams.class.getSimpleName() + "[", "]")
+                .add("username='" + username + "'")
+                .add("password='" + password + "'")
+                .add("url='" + url + "'")
+                .toString();
     }
 }

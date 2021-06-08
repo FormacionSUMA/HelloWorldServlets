@@ -1,11 +1,12 @@
 package es.github.jpm33.helloWorld.services;
 
+import es.github.jpm33.helloWorld.AbstractTest;
 import es.github.jpm33.helloWorld.domain.beans.UserBean;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UserServiceIT {
+public class UserServiceTest extends AbstractTest {
 
     @Test
     public void loginKO() {
