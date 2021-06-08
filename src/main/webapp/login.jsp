@@ -16,10 +16,6 @@
             loginFail = !user.isLoginValid();
     }
 
-//    if (request.getParameter("btnLoginServlet") != null) {
-//
-//    }
-
 %>
 <html>
 <head>
@@ -29,15 +25,14 @@
     <link type="text/css" rel="stylesheet" href="styles/web.css">
 </head>
 <body>
-
-    loginFail = <%= loginFail %>
-
-    <form id="loginFrm" action="LoginServlet" method="post">
+    <form id="loginForm" action="./LoginServlet" method="post">
         <fieldset>
             <legend>Login Form</legend>
-                Username <input type="text" name="un" placeholder="Please enter your username" autofocus /><br>
-                Password <input type="password" name="pw" placeholder="Please enter your password" /><br><hr>
-                         <input type="submit" name="btnLoginServlet" value="submit">
+                <label for="un">Username</label>
+                <input type="text" name="un" placeholder="Please enter your username" autofocus /><br>
+                <label for="pw">Password</label>
+                <input type="password" name="pw" placeholder="Please enter your password" /><br><hr>
+                 <input type="submit" name="btnLoginServlet" value="submit">
         </fieldset>
     </form>
 <%--    <c:if test="${loginFail == true}">--%>

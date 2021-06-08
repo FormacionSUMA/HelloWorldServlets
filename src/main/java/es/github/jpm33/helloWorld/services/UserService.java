@@ -39,7 +39,6 @@ public class UserService {
     }
 
     public static UserBean login(UserBean user) {
-//        UserBean usu = new UserBean();
         try (Connection con = ConnectionManager.getConnection()) {
 
             PreparedStatement ps = con.prepareStatement("SELECT login, password FROM usuarios WHERE login = ? AND password = ? AND active IS TRUE LIMIT 1");

@@ -20,7 +20,7 @@ public class ConnectionManager {
                                                                                     System.getenv("CLEARDB_DATABASE_URL"));
             ConeectionParams params = new ConeectionParams(uri);
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(config.getValues().getProperty("jdbc_driver"));
             return DriverManager.getConnection(params.getUrl(), params.getUsername(), params.getPassword());
 
         } catch (ClassNotFoundException | URISyntaxException | SQLException ex) {

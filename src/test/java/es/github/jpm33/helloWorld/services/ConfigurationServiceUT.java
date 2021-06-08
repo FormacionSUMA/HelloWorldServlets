@@ -2,7 +2,7 @@ package es.github.jpm33.helloWorld.services;
 
 import org.junit.Test;
 
-public class ConfigurationServiceIT {
+public class ConfigurationServiceUT {
 
     private ConfigurationService service = new ConfigurationService("test.properties");
 
