@@ -57,7 +57,7 @@ class ConeectionParams {
     public ConeectionParams(URI uri) {
         username = uri.getUserInfo().split(":")[0];
         password = uri.getUserInfo().split(":")[1];
-        url = "jdbc:mysql://" + uri.getHost() + uri.getPath();
+        url = "jdbc:mysql://" + uri.getHost() + uri.getPath() + "?loggerLevel=DEBUG";
     }
 
     public String getUsername() {

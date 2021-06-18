@@ -29,10 +29,10 @@
     </ul>
 </ul>
 </p>
-<a href="/Logout">Cerrar sesión</a>
+<a href="./logout">Cerrar sesión</a>
 <br>
 <br>
-<a href="ReportServlet">Generar PDF</a>
+<a href="./report">Generar PDF</a>
 </body>
 </html>
 <% } // Cerrar: if (user == null || !user.isValid()) %>

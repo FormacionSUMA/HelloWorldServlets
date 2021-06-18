@@ -8,7 +8,8 @@ public class  Startup extends AbstractServlet {
     static {
         String path = Startup.class.getClassLoader().getResource("logging.properties").getFile();
         System.setProperty("java.util.logging.config.file", path);
-        Logger.getLogger(Startup.class.getName()).info("Carga la configuración del CLASSPATH del fichero logging.properties");
+
+        Logger.getLogger(Startup.class.getName()).info("Carga la configuración del fichero logging.properties localizado en el CLASSPATH.");
         Logger.getLogger(Startup.class.getName()).info(path);
     }
 }

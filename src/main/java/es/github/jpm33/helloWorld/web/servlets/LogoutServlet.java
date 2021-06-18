@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/Logout")
+@WebServlet(value = "/logout")
 public class LogoutServlet extends AbstractServlet  {
 
     private static Logger logger = Logger.getLogger(LogoutServlet.class.getSimpleName());
@@ -21,7 +21,7 @@ public class LogoutServlet extends AbstractServlet  {
             logger.warning("No hay sesion que cerrar!");
         }
         else {
-            logger.info(String.format("Cerrando la sesion de %s.", user.getLogin()));
+            logger.info(String.format("Cerrando la sesion del usuario '%s'.", user.getLogin()));
             req.getSession(true).removeAttribute("currentSessionUser");
         }
 

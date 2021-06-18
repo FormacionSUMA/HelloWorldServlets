@@ -5,13 +5,12 @@ import es.github.jpm33.helloWorld.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/Login")
+@WebServlet(value = "/login")
 public class LoginServlet extends AbstractServlet {
 
     private static Logger logger = Logger.getLogger(LoginServlet.class.getSimpleName());
@@ -23,8 +22,8 @@ public class LoginServlet extends AbstractServlet {
             String fUsernamee = req.getParameter("un");
             String fPassword = req.getParameter("pw");
 
-            logger.info("   POST[un] = " + fUsernamee);
-            logger.info("   POST[pw] = " + fPassword);
+            logger.info("POST[un] = " + fUsernamee);
+            logger.info("POST[pw] = " + fPassword);
 
             UserBean user = UserService.login(new UserBean(fUsernamee, fPassword));
             if (user.isLoginValid()) {

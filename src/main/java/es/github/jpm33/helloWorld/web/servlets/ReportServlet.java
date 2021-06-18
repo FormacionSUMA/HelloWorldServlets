@@ -17,7 +17,7 @@ import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(value = "/ReportServlet")
+@WebServlet(value = "/report")
 public class ReportServlet extends HttpServlet {
 
     private static Logger logger = Logger.getLogger(ReportServlet.class.getSimpleName());
@@ -30,11 +30,13 @@ public class ReportServlet extends HttpServlet {
         resp.setHeader("Pragma", "public");
         resp.setContentType("application/pdf");
 
-//        crearDocumento();
+        crearDocumento();
         OutputStream os = resp.getOutputStream();
         crearDocumento().writeTo(os);
         os.flush();
         os.close();
+
+        logger.info("Generado el report en PDF.");
     }
 
     private static ByteArrayOutputStream crearDocumento() {

@@ -18,7 +18,7 @@ public class UserService {
             PreparedStatement ps = con.prepareStatement("SELECT id, login, fullname, created_at, active FROM usuarios WHERE login = ? LIMIT 1");
             ps.setString(1, login);
 
-            logger.info(String.format("executeQuery :: %s", ps));
+            logger.info(String.format("executeQuery[%s]", ps));
             ResultSet result = ps.executeQuery();
 
             if (result.next()) {

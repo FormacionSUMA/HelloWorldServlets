@@ -9,7 +9,7 @@
 <%
 
     boolean loginFail = false;
-    boolean isFormSubmited = "POST".equals(request.getMethod().toUpperCase()) && request.getParameter("btnLoginServlet") != null;
+    boolean isFormSubmited = "POST".equalsIgnoreCase(request.getMethod()) && request.getParameter("btnLoginServlet") != null;
     UserBean user = (UserBean) session.getAttribute("currentSessionUser");
 
     if (isFormSubmited && user != null) {
@@ -25,7 +25,7 @@
     <link type="text/css" rel="stylesheet" href="styles/web.css">
 </head>
 <body>
-    <form id="loginForm" action="./Login" method="post">
+    <form id="loginForm" action="./login" method="post">
         <fieldset>
             <legend>Login Form</legend>
                 <label for="un">Username</label>
