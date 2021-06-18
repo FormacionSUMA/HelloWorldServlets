@@ -114,4 +114,5 @@ https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 Java Color
 https://github.com/dialex/JColor
 
-
+Sending e-mail with JSP, Servlet and JavaMail
+https://www.codejava.net/java-ee/jsp/sending-e-mail-with-jsp-servlet-and-javamail

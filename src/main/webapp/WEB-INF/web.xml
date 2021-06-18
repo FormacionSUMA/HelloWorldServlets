@@ -11,4 +11,25 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
 
+  <!-- SMTP settings -->
+  <context-param>
+    <param-name>smtp.host</param-name>
+    <param-value>smtp.ionos.es</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>smtp.port</param-name>
+    <param-value>587</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>smtp.user</param-name>
+    <param-value>a.garcia@afgen.es</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>smtp.pass</param-name>
+    <param-value>861WQhV1</param-value>
+  </context-param>
+
 </web-app>
